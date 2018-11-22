@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> :: Fashion Hub ::</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+<header>
+	<a href="index.html">Home</a>
+	<ul>
+		<li> <a href="index.html?id=2"> CASUALS </a> </li>
+		<li> <a href="index.html?id=1"> FORMALS </a> </li>
+		<li> <a href="index.html?id=3"> JEANS </a> </li>
+
+	</ul>
+</header>
+
+<div class="offer">
+	<h1> NEW FESTIVE SEASON SATRTED. </h1>
+	<h2> Buy your products with lowest price </h2>
+</div>
+<div class="parent">
+	
+</div>
+<footer>Copyt  Rights are reserved &copy; &lt;2018 &gt;</footer>
+
+</body>
+</html>
+
+<script type="text/javascript">
+// var get={};
+	var query=window.location.search.substring(1).split("&");
+	for (var i = 0, max=query.length; i<max; i++) {
+		if (query[i]==="")
+			continue;
+		var param=query[i].split("=");
+		console.log(param);
+
+	}
+
+	console.log(param[1]);
+
+	fetch("database.json").then(res=>{
+		return res.json();
+	}).then(data=>{
+		console.log(data);
+		products(data.products);
+	})
+
+	var mainDiv=document.querySelector(".parent");
+
+	function products(pro){
+		for(var i in pro){
+			console.log(pro[i].name);
+			var offer=document.querySelector(".offer");
+			offer.style.display="none";
+			if(pro[i].id==param[1]){
+				var childDiv=document.createElement("div");
+				childDiv.classList.add("child");
+				mainDiv.append(childDiv);
+
+				var name=document.createElement("h2");
+				name.textContent=pro[i].name;
+				childDiv.append(name);
+
+				var proImg=document.createElement("img");
+				proImg.src=pro[i].image;
+				proImg.alt=pro[i].name;
+				proImg.classList.add("proImg");
+				childDiv.append(proImg);
+
+				var price=document.createElement("h3");
+				price.textContent="₹ : "+pro[i].price;
+				childDiv.append(price);
+
+				var link=document.createElement("a");
+				link.href="desc.html?id="+pro[i].subid;
+				link.textContent="View product";
+				childDiv.append(link);
+				link.classList.add("link");
+			}
+
+
+			}
+		
+	}
+	</script>

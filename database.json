@@ -1,0 +1,89 @@
+{
+	"products":[
+		{
+			"id":1,
+			"name":"Ramonds blue shirt",
+			"price":"300",
+			"image":"images/formal1.jpeg",
+			"subid":1.1
+		},
+		{
+			"id":1,
+			"name":"Lee-cooper",
+			"price":"400",
+			"image":"images/formal2.jpeg",
+			"subid":1.2
+		},
+		{
+			"id":1,
+			"name":"Peter-England",
+			"price":"500",
+			"image":"images/formal3.jpeg",
+			"subid":1.3
+		},
+		{
+			"id":1,
+			"name":"Vanhuesen",
+			"price":"500",
+			"image":"images/formal4.jpeg",
+			"subid":1.4
+		},
+		{
+			"id":2,
+			"name":"Ramonds casual shirt",
+			"price":"500",
+			"image":"images/casual1.jpeg",
+			"subid":2.1
+		},
+		{
+			"id":2,
+			"name":"Pepe Casual shirt",
+			"price":"500",
+			"image":"images/casual2.jpeg",
+			"subid":2.2
+		},
+		{
+			"id":2,
+			"name":"Lee-cooper shirt",
+			"price":"500",
+			"image":"images/casual3.jpeg",
+			"subid":2.3
+		},
+		{
+			"id":2,
+			"name":"Ramonds casual shirt",
+			"price":"500",
+			"image":"images/casual4.jpeg",
+			"subid":2.4
+		},
+		{
+			"id":3,
+			"name":"Wrangler Jean",
+			"price":"1300",
+			"image":"images/jean1.jpeg",
+			"subid":3.1
+		},
+		{
+			"id":3,
+			"name":"pepe Jean",
+			"price":"1200",
+			"image":"images/jean2.jpeg",
+			"subid":3.2
+		},
+		{
+			"id":3,
+			"name":"Lee-cooper Jean",
+			"price":"1700",
+			"image":"images/jean3.jpeg",
+			"subid":3.3
+		},
+		{
+			"id":3,
+			"name":"Peter-England Jean",
+			"price":"1300",
+			"image":"images/jean4.jpeg",
+			"subid":3.4
+		}
+		
+	]
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>:: FASHION WORLD :: </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles/desc.css">
+
+</head>
+<body>
+	<div class="parent">
+		<div class="child1"></div> <div class="child2"></div>
+		
+	</div>
+
+	<div class="review">
+		<h3> Write a review here...</h3>
+		<input type="text" id="name" placeholder="your name"> <br> <br>
+		<textarea placeholder="Give your review here..." id="review"></textarea>  <br> <br>
+		<button type="button" id="button" onclick="data()"> Submit </button> 
+	</div> <br>
+
+	<div class="mainReview">
+		<!-- <h1> Reviews </h1> <br> -->
+	</div>
+
+</body>
+</html>
+<script type="text/javascript" src="main.js"> </script>
+<script type="text/javascript">
+var get={};
+	var query=window.location.search.substring(1).split("&");
+	for (var i = 0, max=query.length; i<max; i++) {
+		if (query[i]==="")
+			continue;
+		var param=query[i].split("=");
+		console.log(param);
+
+	}
+
+	console.log(param[1]);
+
+	fetch("database.json").then(res=>{
+		return res.json();
+	}).then(data=>{
+		console.log(data);
+		products(data.products);
+	})
+
+	var child1=document.querySelector(".child1");
+	var child2=document.querySelector(".child2");
+
+
+	function products(pro){
+		for (var i in pro){
+			if(pro[i].subid==param[1]){
+				var img=document.createElement("img");
+				img.src=pro[i].image;
+				img.alt=pro[i].name;
+				child1.append(img);
+
+				var title=document.createElement("h1");
+				title.textContent=pro[i].name;
+				child2.append(title);
+
+			}
+		}
+
+	}
+
+
+var idb=indexedDB.open("Reviews", 1);
+idb.onupgradeneeded=function(e){
+	var dbHandler = e.target.result;
+	toreDB = dbHandler.createObjectStore("productReviews", {keyPath: "id", autoIncrement:true});
+	console.log("upgraded");
+	}
+
+idb.onsuccess=function(e){
+
+var dbHandler=e.target.result;
+var transaction = dbHandler.transaction(["productReviews"], 'readwrite'),
+      storeDB = transaction.objectStore('productReviews');
+      var request=storeDB.getAll();
+
+      request.onsuccess=function(e){
+      	console.log(request.result);
+      	reviews(request.result);
+      }
+      var mainReview=document.querySelector(".mainReview");
+
+      function reviews(rew){
+		for(var i in rew){
+			console.log(rew[i].proid);
+			if(rew[i].proid==param[1]){
+				var proReview=document.createElement("div");
+				proReview.classList.add("proReview");
+				mainReview.append(proReview);
+				var p=document.createElement("h3");
+				p.textContent=rew[i].review;
+
+				var h4=document.createElement("span");
+				h4.textContent=rew[i].name;
+				// var hr=document.createElement("hr");
+
+				proReview.append(h4);
+				proReview.append(p);
+				// body.append(proReview);
+			}
+      	}
+      }
+
+
+}
+	</script>
+
